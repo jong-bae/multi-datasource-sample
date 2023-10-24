@@ -10,3 +10,8 @@ spring:
     jdbc-url: jdbc:sqlserver://localhost:1433;database=sample
     username: local
     password: 4042
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
