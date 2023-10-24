@@ -1,5 +1,7 @@
 package com.sample.core.mssql.test;
 
+import com.sample.core.maria.test2.PostEntity;
+import com.sample.core.maria.test2.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ import java.util.List;
  */
 @Service
 public class PostService {
-    @Autowired private  PostRepository postRepository;
+    @Autowired private PostRepository postRepository;
 
 
     public void insert(PostEntity param) {

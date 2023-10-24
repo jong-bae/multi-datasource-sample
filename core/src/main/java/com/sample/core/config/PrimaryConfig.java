@@ -24,12 +24,11 @@ import java.util.HashMap;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "com.sample.core.maria",
+        basePackages = "com.sample.core.maria.test",
         entityManagerFactoryRef = "primaryEntityManager",
         transactionManagerRef = "primaryTransactionManager"
 )
 public class PrimaryConfig {
-
 
     @Bean
     @Primary
@@ -43,12 +42,18 @@ public class PrimaryConfig {
     public LocalContainerEntityManagerFactoryBean primaryEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(primaryDataSource());
-        em.setPackagesToScan(new String[] {"com.sample.core.maria"});
+        em.setPackagesToScan(new String[] {"com.sample.core.maria.test"});
+
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setShowSql(true);
+        vendorAdapter.setGenerateDdl(true);
         em.setJpaVendorAdapter(vendorAdapter);
+
         HashMap<String, Object> prop = new HashMap<>();
         prop.put("hibernate.hbm2ddl.auto", "update");
+        prop.put("hibernate.format_sql", true);
         em.setJpaPropertyMap(prop);
+
         return em;
     }
 

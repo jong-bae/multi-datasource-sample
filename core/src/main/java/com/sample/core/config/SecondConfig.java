@@ -4,7 +4,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -24,7 +23,7 @@ import java.util.HashMap;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "com.sample.core.mssql",
+        basePackages = {"com.sample.core.maria.test2"},
         entityManagerFactoryRef = "secondEntityManager",
         transactionManagerRef = "secondTransactionManager"
 )
@@ -40,7 +39,7 @@ public class SecondConfig {
     public LocalContainerEntityManagerFactoryBean secondEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(secondDataSource());
-        em.setPackagesToScan(new String[] {"com.sample.core.mssql.test"});
+        em.setPackagesToScan(new String[] {"com.sample.core.maria.test2"});
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         HashMap<String, Object> prop = new HashMap<>();

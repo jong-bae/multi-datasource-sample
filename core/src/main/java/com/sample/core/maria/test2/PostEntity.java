@@ -1,4 +1,4 @@
-package com.sample.core.mssql.test;
+package com.sample.core.maria.test2;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
