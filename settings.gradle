@@ -1,4 +1,3 @@
 rootProject.name = 'multi'
-include 'postgresql'
 include 'mssql'
 include 'core'

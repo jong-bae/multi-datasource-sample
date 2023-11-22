@@ -2,7 +2,8 @@ package com.sample.core.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -14,62 +15,47 @@ import java.util.HashMap;
 
 /**
  * @author : JB
- * @packageName : com.sample.mssql.config
- * @fileName : PrimaryConfig
+ * @packageName : com.sample.postgresql.config
+ * @fileName : SecondConfig
  * @description :
  * @since : 2023-10-18
  */
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "com.sample.core.maria",
-        entityManagerFactoryRef = "primaryEntityManager",
-        transactionManagerRef = "primaryTransactionManager"
-//        excludeFilters = {
-//                @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com.sample.core.maria.test2")
-//        }
+        basePackages = "com.sample.core.postgres",
+        entityManagerFactoryRef = "thirdEntityManager",
+        transactionManagerRef = "thirdTransactionManager"
 )
-public class PrimaryConfig {
+public class ThirdConfig {
 
     @Bean
-    @Primary
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource primaryDataSource() {
+    @ConfigurationProperties(prefix = "spring.third-datasource")
+    public DataSource thirdDataSource() {
         return DataSourceBuilder.create().build();
     }
 
     @Bean
-    @Primary
-    public LocalContainerEntityManagerFactoryBean primaryEntityManager() {
+    public LocalContainerEntityManagerFactoryBean thirdEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(primaryDataSource());
-        em.setPackagesToScan(new String[] {"com.sample.core.maria"});
+        em.setDataSource(thirdDataSource());
+        em.setPackagesToScan(new String[] {"com.sample.core.postgres"});
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setShowSql(true);
-        vendorAdapter.setGenerateDdl(true);
         em.setJpaVendorAdapter(vendorAdapter);
 
         HashMap<String, Object> prop = new HashMap<>();
+        prop.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         prop.put("hibernate.hbm2ddl.auto", "update");
-        prop.put("hibernate.format_sql", true);
         em.setJpaPropertyMap(prop);
 
         return em;
     }
 
     @Bean
-    @Primary
-    public PlatformTransactionManager primaryTransactionManager() {
+    public PlatformTransactionManager thirdTransactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(primaryEntityManager().getObject());
+        transactionManager.setEntityManagerFactory(thirdEntityManager().getObject());
         return transactionManager;
     }
 }
-
-
-
-
-
-
-

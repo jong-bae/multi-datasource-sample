@@ -11,6 +11,11 @@ spring:
     username: local
     password: 4042
 
+  third-datasource:
+    jdbc-url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: 91364042
+
 decorator:
   datasource:
     p6spy:

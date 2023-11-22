@@ -3,12 +3,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc:8.4.1.jre8'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
-    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'org.postgresql:postgresql:42.6.0'
 //    implementation project(':mssql')
 //    implementation project(':postgresql')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-/*tasks.named('test') {
+tasks.named('test') {
     useJUnitPlatform()
-}*/
+}

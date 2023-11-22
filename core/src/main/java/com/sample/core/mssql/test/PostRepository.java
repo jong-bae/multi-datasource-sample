@@ -1,4 +1,4 @@
-package com.sample.core.maria.test2;
+package com.sample.core.mssql.test;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

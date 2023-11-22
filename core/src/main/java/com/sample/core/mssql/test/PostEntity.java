@@ -1,4 +1,4 @@
-package com.sample.postgresql.test;
+package com.sample.core.mssql.test;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,19 +11,21 @@ import javax.persistence.Table;
 
 /**
  * @author : JB
- * @packageName : com.sample.postgresql.test
- * @fileName : BoardEntity
+ * @packageName : com.sample.mssql.test
+ * @fileName : PostEntity
  * @description :
  * @since : 2023-10-18
  */
+
 @Entity
-@Table(name = "board")
+@Table(name = "post")
 @Data
 @NoArgsConstructor @AllArgsConstructor
-public class BoardEntity {
+public class PostEntity {
 
-    @Id @Column(name = "BOARD_ID")
-    private String boardId;
-    @Column(name = "BOARD_NAME")
-    private String boardName;
+    @Id
+    @Column(name = "POST_ID")
+    private String postId;
+    @Column(name="POST_NAME")
+    private String postName;
 }

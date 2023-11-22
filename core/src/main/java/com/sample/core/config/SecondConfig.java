@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = {"com.sample.core.maria.test2"},
+        basePackages = "com.sample.core.mssql",
         entityManagerFactoryRef = "secondEntityManager",
         transactionManagerRef = "secondTransactionManager"
 )
@@ -39,12 +39,15 @@ public class SecondConfig {
     public LocalContainerEntityManagerFactoryBean secondEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(secondDataSource());
-        em.setPackagesToScan(new String[] {"com.sample.core.maria.test2"});
+        em.setPackagesToScan(new String[] {"com.sample.core.mssql"});
+
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
+
         HashMap<String, Object> prop = new HashMap<>();
         prop.put("hibernate.hbm2ddl.auto", "update");
         em.setJpaPropertyMap(prop);
+
         return em;
     }
 

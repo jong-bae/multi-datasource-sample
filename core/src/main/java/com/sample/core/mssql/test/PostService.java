@@ -1,7 +1,7 @@
 package com.sample.core.mssql.test;
 
-import com.sample.core.maria.test2.PostEntity;
-import com.sample.core.maria.test2.PostRepository;
+import com.sample.core.mssql.test.PostEntity;
+import com.sample.core.mssql.test.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
