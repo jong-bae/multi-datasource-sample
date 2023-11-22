@@ -17,10 +17,10 @@ import javax.persistence.Table;
  * @since : 2023-11-22
  */
 @Entity
-@Table(name = "sales")
+@Table(name = "sales", schema = "jpa")
 @Getter
 @NoArgsConstructor @AllArgsConstructor
-public class sales {
+public class SalesEntity {
 
     @Id @Column(name = "SALE_ID")
     private String saleId;

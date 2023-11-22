@@ -17,7 +17,7 @@ import javax.persistence.Table;
  * @since : 2023-10-18
  */
 @Entity
-@Table(name = "board")
+@Table(name = "board", catalog = "jpa_test")
 @Data
 @NoArgsConstructor @AllArgsConstructor
 public class BoardEntity {

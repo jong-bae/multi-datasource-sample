@@ -45,7 +45,7 @@ public class SecondConfig {
         em.setJpaVendorAdapter(vendorAdapter);
 
         HashMap<String, Object> prop = new HashMap<>();
-        prop.put("hibernate.hbm2ddl.auto", "update");
+        prop.put("hibernate.hbm2ddl.auto", "create");
         em.setJpaPropertyMap(prop);
 
         return em;

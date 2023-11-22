@@ -51,7 +51,7 @@ public class PrimaryConfig {
         em.setJpaVendorAdapter(vendorAdapter);
 
         HashMap<String, Object> prop = new HashMap<>();
-        prop.put("hibernate.hbm2ddl.auto", "update");
+        prop.put("hibernate.hbm2ddl.auto", "create");
         prop.put("hibernate.format_sql", true);
         em.setJpaPropertyMap(prop);
 

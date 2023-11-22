@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "post")
+@Table(name = "post", catalog = "jpa", schema = "dbo")
 @Data
 @NoArgsConstructor @AllArgsConstructor
 public class PostEntity {

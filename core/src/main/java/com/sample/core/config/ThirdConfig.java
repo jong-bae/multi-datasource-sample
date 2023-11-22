@@ -45,8 +45,8 @@ public class ThirdConfig {
         em.setJpaVendorAdapter(vendorAdapter);
 
         HashMap<String, Object> prop = new HashMap<>();
-        prop.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        prop.put("hibernate.hbm2ddl.auto", "update");
+//        prop.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        prop.put("hibernate.hbm2ddl.auto", "create");
         em.setJpaPropertyMap(prop);
 
         return em;
